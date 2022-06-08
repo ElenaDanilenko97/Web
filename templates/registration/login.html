@@ -1,0 +1,12 @@
+{% extends 'mysite/base.html' %}
+{% block content %}
+<div class="main">
+<link rel="stylesheet" type="text/css" href="autoriz.css">
+<h2>Авторизация</h2>
+ <form action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Войти</button>
+</form>
+  </div>
+{% endblock content %}

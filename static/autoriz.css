@@ -1,0 +1,38 @@
+.auto{
+font-family: 'Caveat', cursive;
+}
+
+input[type=email]:invalid{
+border: 4px solid Crimson;
+background-color: lightcoral;}
+
+input[type=email]:valid{
+border: 4px solid DarkGreen;
+background-color: LightGreen;}
+
+input[type=password]:valid{
+border: 4px solid DarkGreen;
+background-color: LightGreen;}
+
+input[type=password]:invalid{
+border: 4px solid Crimson;
+background-color: lightcoral;}
+
+
+input[type=number]:valid{
+border: 4px solid DarkGreen;
+background-color: LightGreen;}
+
+input[type=number]:invalid{
+border: 4px solid Crimson;
+background-color: lightcoral;}
+
+input[type=text]:valid{
+border: 4px solid DarkGreen;
+background-color: LightGreen;}
+
+input[type=text]:invalid{
+border: 4px solid Crimson;
+background-color: lightcoral;}
+
+

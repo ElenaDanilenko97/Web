@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+
+<html>
+ <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="autoriz.css">
+  <title>Регистрация</title>
+ </head>
+ <body>
+ <form class="form" onsubmit="return validateForm()" action="handler.php" action="confirmation.php" method="post" >
+<div class="auto"><h1>Регистрация</h1></div>
+<div>
+
+   <p>E-mail: <input type="email" id="email" name="email" required minlength="8">
+      <span class="error" aria-live="polite"></span> <br> <br></p>
+   <p>Пароль: <input type="password" id="pass" name="pass" required minlength="8">
+      <span class="error2" aria-live="polite"></span> <br> <br></p>
+   <p>Имя: <input type="text" id="name" name="name" pattern="[A-Z][a-z]*" required maxlength="50">
+      <span class="error2" aria-live="polite"></span>  <br> <br></p>
+   <p>Фамилия: <input type="text" id="fam" name="fam" pattern="[A-Z][a-z]*" required minlength="2">
+      <span class="error2" aria-live="polite"></span> <br> <br></p>
+   <p>Телефон: <input 
+        type="text" 
+        class="phone-field"
+        name="phone" 
+        placeholder="Номер телефона" 
+        data-rule-required="true" 
+        data-rule-minlength="10" 
+    />
+<br> <br></p>
+</div>
+
+<p>Возраст: <input required type = "number"  age = "pass" value =  "" min = "7" max = "99" class="LogPass"> <br> <br></p>
+</div>
+<div class="Button">
+  <button onclick="myFunction1()">Сохранить</button>
+
+  <input type="button" value =  "Авторизация" onclick= "window.location.href = './autoriz.html'"></p>
+</div>
+
+ </form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"></script>
+<script>
+
+$('.phone-field').inputmask("+7(999)999-9999");
+    jQuery.validator.addMethod("checkMaskPhone", function(value, element) {
+        return /\+\d{1}\(\d{3}\)\d{3}-\d{4}/g.test(value); 
+    });
+
+    var form = $('.form');
+    
+    form.validate();
+    
+    $.validator.addClassRules({
+        'phone-field': {
+            checkMaskPhone: true,
+        }
+    });
+    
+    form.submit(function(e){
+        e.preventDefault();
+        if (form.valid()) {
+            alert('Форма отправлена');
+        }
+        return;
+    });
+  </script>
+
+
+ </body>
+</html>

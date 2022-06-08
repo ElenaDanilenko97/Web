@@ -1,0 +1,21 @@
+{% extends 'mysite/base.html' %}
+
+{% block content %}
+<div class="main">
+  <div id="intro"class="paper">
+    <h1> Русская музыкальная литература</h1>
+    <p>На данном сайте Вы можете ознакомиться с произведениями <strong>русской классической музыки.</strong></p>
+  </div>
+    <h3>Выберите композитора</h3>
+    <ul>
+      <li><a href="{% url 'borodin' %}" target="_blank"> Бородин </a></li>
+      <li>Чайковский</li>
+      <li>Рахманинов</li>
+      <li>Мусоргский</li>
+    </ul>
+  <div>
+  </div>
+</div>
+{% endblock %}
+
+

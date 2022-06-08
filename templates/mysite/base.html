@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head> <!-- Техническая информация о документе -->
+<meta charset="UTF-8">
+<meta name="description" content="Русская классическая музыка">
+<meta name="keywords" content="Музыка, Классика, Русская">
+<title>Русская музыкальная литература</title>
+<style>
+.paper {
+   width: 100%;
+   height: 100px;
+   background-color: #FFE4E1;
+   color: black;
+}
+</style>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+<head>
+  <nav>
+<ul class="menu">
+  {% if user.is_authenticated %}
+  <li class="User">
+        <a> Привет, {{ user.username }}! </a>
+    </li>
+  {% endif %}
+  <li><a href=""class="down">Меню</a>
+      <ul class="submenu">
+	<!--<a href="./autoriz.html">Войти</a>-->
+        {% if user.is_authenticated %}
+        
+        <li><a href="{% url 'logout' %}">Выйти</a></li>
+        <li><a href="{% url 'home' %}">Главная</a></li>
+       <!-- <a href="">О нас</a>-->
+        <li><a href="{% url 'telegram' %}">Обратная связь</a></li>
+        </ul>
+        {% else %}
+    <li class="list-group-item">
+        <a href="{% url 'login' %}">Войти</a>
+    </li>
+      </ul>
+    </ul>
+        {% endif %}
+  <li class="list-group-item">
+       <!-- <a href="{% url 'home' %}">Главная</a>-->
+    </li>
+     </ul>
+   </li>
+</ul>
+</nav>
+</head>
+<body class="container">
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

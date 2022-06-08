@@ -1,0 +1,54 @@
+{% extends 'mysite/base.html' %}
+
+{% block content %}
+<div class="main">
+ <form name="telegram" onsubmit="submitform();return false">
+<div class="auto"><h1>Напиши нам в Telegram</h1></div>
+   <p>Имя: <input type="text" id="name" name="name" value="Пример: Иван Иванов" onblur="if(this.value.length == 0) this.value = 'Пример: Иван Иванов'" onfocus="if(this.value == 'Пример: Иван Иванов') this.value = '' " pattern="[A-Z][a-z]*" required maxlength="50"/> <br> <br></p>
+   <p>E-mail: <input type="email" id="email" name="email" value="Пример: mail@ex.com" onblur="if(this.value.length == 0) this.value = 'Пример: mail@ex.com'" onfocus="if(this.value == 'Пример: mail@ex.com') this.value = '' " required minlength="8"/> <br> <br></p>
+
+<p>Сообщение: <textarea required type = "text"  name = "msg" id="text" onblur="if(this.value.length == 0) this.value = 'Введите сообщение'" onfocus="if(this.value == 'Введите сообщение') this.value=''">Введите сообщение</textarea <br> <br></p>
+</div>
+<div class="Button">
+  <input type="submit" id="send" text = "Отправить"/></br>
+</div>
+</form>
+<script type="text/javascript">
+  
+function submitform(){  
+  //console.log("test");
+  const form = document.querySelector("telegram");
+    let formData = new FormData(document.forms.telegram);
+      console.log(formData);
+    let xhr = new XMLHttpRequest();
+    let url = new URL('https://api.telegram.org/bot5284282328:AAEKzmhF-1qOoY3B75hF3RrLgc1iBJP95o4/sendMessage');
+    url.searchParams.set('chat_id', '540484916');
+    var name = document.getElementById('name');
+    var email = document.getElementById('email');
+    var text = document.getElementById('text');
+    url.searchParams.set('text', "Имя: " + name.value +"\nПочта: " + email.value +"\nСообщение:\n" + text.value);
+    xhr.open("POST", url); // 
+    xhr.send();
+
+    /*xhr.onload = function() {
+      if (xhr.status != 200) { 
+        alert(`Ошибка ${xhr.status}: ${xhr.statusText}`); 
+    } else { 
+        alert(`Готово, получили ${xhr.response.length} байт`); //}
+    };
+
+    xhr.onprogress = function(event) {
+      if (event.lengthComputable) {
+        alert(`Получено ${event.loaded} из ${event.total} байт`);
+      } else {
+        alert(`Получено ${event.loaded} байт`);
+      }
+    };
+
+    xhr.onerror = function() {
+      alert("Запрос не удался");
+    };*/
+}
+</script>
+</div>
+{% endblock %}

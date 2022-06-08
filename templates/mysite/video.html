@@ -1,0 +1,20 @@
+{% extends 'mysite/base.html' %}
+
+{% block content %}
+<video  width="400" height="300" controls="controls">
+ <source src="http://video.rutube.ru/7c806393a9705797d7e92c4a05493d5d">
+</video>
+  <h1>Видео!</h1>
+<li><a href="{% url 'create' %}">Добавить комментарий</a></li>
+<h3>Бородин: </h3>
+<ul> 
+<li>Князь Игорь</li>
+
+{% for el in tasks %}
+<div class="alert alert-warning mt-2">
+  <h3> {{ el.title }}</h3>
+  <p>{{ el.task }}</p>
+</div>
+{% endfor%}
+</ul>
+{% endblock %}
